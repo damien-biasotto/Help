@@ -10,5 +10,5 @@ It's my first sublime text2 plugin and my first piece of code in Python.
 
 Any ideas for improvement is of course appreciated.
 
-The plugin is strongly inspired by __Grafikart's open_browser plugin and Nettuts' Fetch plugin__.
+The plugin is strongly inspired by [__Grafikart's open_browser plugin__](https://github.com/Grafikart/Open-Browser-SublimeText2-Plugin "Grafikart's Open Browser") and [__Nettuts' Fetch plugin__](https://github.com/weslly/Nettuts-Fetch "Nettuts' Fetch Plugin").
 
