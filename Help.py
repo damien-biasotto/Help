@@ -51,9 +51,9 @@ class HelpGetCommand(sublime_plugin.TextCommand):
 		for sel in self.view.sel():
 			self.selection += self.view.substr(sel)
 
-		if not self.selection:
+		if not(self.selection):
 			self.view.error_message('You have to highlight the function or class on which you want some help.')
-			sublime.status_message('Aborting')
+			self.sublime.status_message('Aborting')
 		else:
 			self.get_help()
 
