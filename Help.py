@@ -58,6 +58,7 @@ class HelpGetCommand(sublime_plugin.TextCommand):
 			self.get_help()
 
 	def get_help(self):
-		url = self.url.replace(self.selection,'%s',self.selection)
+		url = self.url.replace('%s',self.selection)
 		sublime.status_message('Opening a new tab in your favorite browser (%s)' %  url)
-		webbrowser.open_new_tab(url)
+		defaultbrowser = webbrowser.get()
+		defaultbrowser.open_new_tab(url)
