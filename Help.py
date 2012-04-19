@@ -9,7 +9,7 @@ class HelpCommand(sublime_plugin.WindowCommand):
 
 	def __init__(self,*args,**kwargs):
 		super(HelpCommand,self).__init__(*args,**kwargs)
-		defaultSettings={'PHP':'http://fr.php.net/%s','MooTools':'http://mootools.net/search/?search=1&query=%s','Google':'http://www.google.fr/?q=%s'}
+		defaultSettings={'PHP':'http://fr.php.net/%s','MooTools':'http://mootools.net/search/?search=1&query=%s','Google': 'http://www.google.fr/?q=%s#hl=fr&output=search&q=%s'}
 		settings = sublime.load_settings('Help.sublime-settings') 
 		if not settings.has('urls'):
 			settings.set('urls',defaultSettings)
