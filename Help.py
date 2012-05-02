@@ -4,7 +4,7 @@ import webbrowser
 class HelpCommand(sublime_plugin.WindowCommand):
 	settings 		= None
 	lang			= None
-	defaultSettings = None
+	defaultSettings 	= None
 	helpList		= []
 
 	def __init__(self,*args,**kwargs):
