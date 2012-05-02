@@ -24,7 +24,7 @@ class HelpCommand(sublime_plugin.WindowCommand):
 		self.list_urls();
 
 	def list_urls(self):
-		options = []
+		self.helpList=[]
 		for host, url in self.settings.get('urls').iteritems():
 			self.helpList.append([host,url])
 
