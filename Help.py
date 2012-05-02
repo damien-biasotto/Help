@@ -4,7 +4,7 @@ import webbrowser
 class HelpCommand(sublime_plugin.WindowCommand):
 	settings 		= None
 	lang			= None
-	defaultSettings = None
+	defaultSettings 	= None
 	helpList		= []
 
 	def __init__(self,*args,**kwargs):
@@ -26,10 +26,9 @@ class HelpCommand(sublime_plugin.WindowCommand):
 	def list_urls(self):
 		options = []
 		for host, url in self.settings.get('urls').iteritems():
-			options.append(host)
 			self.helpList.append([host,url])
 
-		self.window.show_quick_panel(options,self.get_help)
+		self.window.show_quick_panel(self.helpList,self.get_help)
 
 	def get_help(self,index):
 		if(index >-1):
