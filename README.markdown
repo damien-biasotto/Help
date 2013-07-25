@@ -1,4 +1,4 @@
-#Help is a Sublime Text2 plugin#
+#Help is a Sublime Text 2 and 3 plugin#
 
 ##Help plugin has a good name, and it does what its name suggests :
 
