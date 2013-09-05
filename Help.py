@@ -25,7 +25,7 @@ class HelpCommand(sublime_plugin.WindowCommand):
 
 	def list_urls(self):
 		self.helpList=[]
-		for host, url in self.settings.get('urls').iteritems():
+		for host, url in sorted(self.settings.get('urls').items()):
 			self.helpList.append([host,url])
 
 		self.window.show_quick_panel(self.helpList,self.get_help)
@@ -33,7 +33,7 @@ class HelpCommand(sublime_plugin.WindowCommand):
 	def get_help(self,index):
 		if(index >-1):
 			url = self.helpList[index][1]
-			self.window.run_command("help_get",{"url":url})
+			self.window.active_view().run_command("help_get",{"url":url})
 
 
 class HelpGetCommand(sublime_plugin.TextCommand):
