@@ -9,7 +9,7 @@ class HelpCommand(sublime_plugin.WindowCommand):
 
 	def __init__(self,*args,**kwargs):
 		super(HelpCommand,self).__init__(*args,**kwargs)
-		defaultSettings={'PHP':'http://fr.php.net/%s','MooTools':'http://mootools.net/search/?search=1&query=%s','Google':'http://www.google.fr/?q=%s'}
+		defaultSettings={'PHP':'http://fr.php.net/%s','MooTools':'http://mootools.net/search/?search=1&query=%s','Google':'http://www.google.com/#q=%s'}
 		settings = sublime.load_settings('Help.sublime-settings') 
 		if not settings.has('urls'):
 			settings.set('urls',defaultSettings)
@@ -38,25 +38,36 @@ class HelpCommand(sublime_plugin.WindowCommand):
 
 class HelpGetCommand(sublime_plugin.TextCommand):
 	selection 	= None
+	lang 		= None
 	url 		= None
 
 	def run(self,edit,url):
 		self.url = url
 		self.selection = ""
-
+		self.lang = ""
+		self.get_lang()
 		self.get_selection()
 
 	def get_selection(self):
 		for sel in self.view.sel():
 			self.selection += self.view.substr(sel)
+		
 
 		if not self.selection:
 			sublime.error_message('You have to highlight a word on which you want some help.')
 			sublime.status_message('Aborting')
 		else:
 			self.get_help()
+	#Easy to add additional languages the same method
+	def get_lang(self):
+		lang_syntax=self.view.settings().get('syntax')
+		if lang_syntax.find("Python")>0:
+			self.lang="Python"
+		elif lang_syntax.find("Ruby")>0:
+			self.lang="Ruby"
+
 
 	def get_help(self):
-		url = self.url.replace('%s',self.selection)
+		url = self.url.replace('%s',self.selection +" " + self.lang)
 		sublime.status_message('Opening a new tab in your favorite browser (%s)' %  url)
 		webbrowser.open(url,2)
